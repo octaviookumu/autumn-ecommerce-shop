@@ -19,11 +19,7 @@ const ProductProvider = ({ children }) => {
     };
   }, []);
 
-  return (
-    <ProductContext.Provider value={{ products }}>
-      {children}
-    </ProductContext.Provider>
-  );
+  return <ProductContext.Provider value={{ products }}>{children}</ProductContext.Provider>;
 };
 
 export default ProductProvider;

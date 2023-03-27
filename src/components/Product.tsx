@@ -7,7 +7,7 @@ const Product = ({
   title,
   category,
   image,
-  price,
+  price
 }: {
   id: string;
   title: string;
@@ -42,9 +42,9 @@ const Product = ({
         </div>
       </div>
       <div>
-        <h1 className="text-sm capitalize text-gray-500 mb-1" >{category}</h1>
+        <h1 className="text-sm capitalize text-gray-500 mb-1">{category}</h1>
         <Link to={`product/${id}`}>
-        <h2 className="font-semibold mb-1" >{title}</h2>
+          <h2 className="font-semibold mb-1">{title}</h2>
         </Link>
         <h3 className="font-semibold">$ {price}</h3>
       </div>
