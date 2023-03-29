@@ -1,4 +1,9 @@
+interface Rating {
+  rate: number;
+  count: number;
+}
 export interface ProductInterface {
+  amount?: number;
   id: string;
   title: string;
   price: number;
@@ -8,7 +13,4 @@ export interface ProductInterface {
   rating: Rating;
 }
 
-interface Rating {
-  rate: number;
-  count: number;
-}
+export type ContextProps = React.FC<{ children: React.ReactNode }>;

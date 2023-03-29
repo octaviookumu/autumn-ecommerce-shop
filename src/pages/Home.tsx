@@ -20,7 +20,7 @@ const Home = () => {
         <div className="container mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-[1.875rem] mx-auto">
             {genderedProducts.map((product: ProductInterface) => {
-              return <Product key={product.id} {...product} />;
+              return <Product key={product.id} product={product} />;
             })}
           </div>
         </div>

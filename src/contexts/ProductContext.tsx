@@ -1,8 +1,9 @@
 import { createContext, useState, useEffect } from "react";
+import { ContextProps } from "../types/types";
 
-export const ProductContext = createContext();
+export const ProductContext = createContext<any>(null);
 
-const ProductProvider = ({ children }) => {
+const ProductProvider: ContextProps = ({ children }) => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
