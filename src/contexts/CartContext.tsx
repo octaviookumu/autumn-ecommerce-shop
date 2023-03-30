@@ -9,26 +9,21 @@ const CartProvider: ContextProps = ({ children }) => {
   const [totalCost, settotalCost] = useState<number>(0);
 
   useEffect(() => {
-    if (cart.length) {
-      const amount = cart.reduce((accumulator, currentItem) => {
-        return accumulator + currentItem.amount;
-      }, 0);
-      setItemAmount(amount);
+    const amount = cart.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.amount;
+    }, 0);
+    setItemAmount(amount);
 
-      const totalAmount = cart.reduceRight((accumulator, currentItem) => {
-        return accumulator + currentItem.amount * currentItem.price;
-      }, 0);
-      settotalCost(totalAmount);
-    } else {
-      settotalCost(0);
-    }
+    const total = cart.reduce((accumulator, currentItem) => {
+      return accumulator + currentItem.amount * currentItem.price;
+    }, 0);
+    settotalCost(total);
 
     return () => {
-      console.log("clean cart");
     };
   }, [cart]);
 
-  const addToCart = (product: ProductInterface, id: string) => {
+  const addToCart = (product: ProductInterface, id: number) => {
     const newItem: ProductInterface = { ...product, amount: 1 };
     const existingCartItem = cart.find((item) => item.id === id);
     if (existingCartItem) {
@@ -45,8 +40,7 @@ const CartProvider: ContextProps = ({ children }) => {
     }
   };
 
-  const removeFromCart = (id: string) => {
-    console.log("id", id);
+  const removeFromCart = (id: number) => {
     const newCart = [...cart].filter((item: ProductInterface) => item.id !== id);
     setCart(newCart);
   };
@@ -55,15 +49,13 @@ const CartProvider: ContextProps = ({ children }) => {
     setCart([]);
   };
 
-  const increaseQuantity = (id: string) => {
+  const increaseQuantity = (id: number) => {
     const cartItem = cart.find((item) => item.id === id);
     addToCart(cartItem, id);
   };
 
-  const decreaseQuantity = (id: string) => {
-    console.log("id", id, cart);
+  const decreaseQuantity = (id: number) => {
     const cartItem = cart.find((item) => item.id === id);
-    console.log("item", cartItem);
     if (cartItem) {
       const newCart = cart.map((item) => {
         if (item.id === id && item.amount) {

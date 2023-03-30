@@ -16,7 +16,6 @@ const Header = () => {
     });
 
     return () => {
-      console.log("clean");
     };
   }, []);
 

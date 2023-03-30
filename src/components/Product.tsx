@@ -12,7 +12,7 @@ const Product = ({ product }: { product: ProductInterface }) => {
     image,
     price
   }: {
-    id: string;
+    id: number;
     title: string;
     category: string;
     image: string;
@@ -22,33 +22,33 @@ const Product = ({ product }: { product: ProductInterface }) => {
 
   return (
     <div>
-      <div className="border border-[#e4e4e4] h-[18.75rem] mb-4 relative overflow-hidden group transition">
-        <div className="w-full h-full flex justify-center items-center">
-          <div className="max-w-[12.5rem] mx-auto flex justify-center items-center">
+      <div className="group relative mb-4 h-[18.75rem] overflow-hidden border border-[#e4e4e4] transition">
+        <div className="flex h-full w-full items-center justify-center">
+          <div className="mx-auto flex max-w-[12.5rem] items-center justify-center">
             <img
-              className="max-h-[10rem] group-hover:scale-110 transition duration-300"
+              className="max-h-[10rem] transition duration-300 group-hover:scale-110"
               src={image}
               alt="Product"
             />
           </div>
         </div>
-        <div className="absolute top-5 -right-10 group-hover:right-5 p-2 flex flex-col items-center justify-center gap-y-2 opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <div className="absolute top-5 -right-10 flex flex-col items-center justify-center gap-y-2 p-2 opacity-0 transition-all duration-300 group-hover:right-5 group-hover:opacity-100">
           <button onClick={() => addToCart(product, id)}>
-            <div className="flex justify-center items-center text-white w-12 h-12 bg-red-500">
+            <div className="flex h-12 w-12 items-center justify-center bg-red-500 text-white">
               <BsPlus className="text-3xl" />
             </div>
           </button>
           <Link
             to={`product/${id}`}
-            className="w-12 h-12 bg-white flex justify-center items-center text-primary drop-shadow-xl">
+            className="flex h-12 w-12 items-center justify-center bg-white text-primary drop-shadow-xl">
             <BsEyeFill />
           </Link>
         </div>
       </div>
       <div>
-        <h1 className="text-sm capitalize text-gray-500 mb-1">{category}</h1>
+        <h1 className="mb-1 text-sm capitalize text-gray-500">{category}</h1>
         <Link to={`product/${id}`}>
-          <h2 className="font-semibold mb-1">{title}</h2>
+          <h2 className="mb-1 font-semibold">{title}</h2>
         </Link>
         <h3 className="font-semibold">$ {price}</h3>
       </div>
